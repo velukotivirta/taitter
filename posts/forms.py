@@ -5,6 +5,7 @@ class CreatePost(forms.ModelForm):
     class Meta:
         model = models.Post
         fields = ['title', 'body', 'slug', 'banner' ]
+        banner = forms.ClearableFileInput(attrs={'class': 'form-control'})
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Enter post title'}),
             'body': forms.Textarea(attrs={'placeholder': 'Write your post content here...'}),
