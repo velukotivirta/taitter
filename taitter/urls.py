@@ -29,3 +29,6 @@ urlpatterns = [
     path("users/", include("users.urls")),  #  Create basepath for /users; go into yourApp, look at urls.py.
 
 ]  
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
