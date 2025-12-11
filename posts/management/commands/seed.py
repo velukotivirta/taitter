@@ -10,13 +10,21 @@ from datetime import timedelta
 
 class Command(BaseCommand):
 
-    def handle(self, *args, **kwargs):
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "amount",
+            type=int,
+            help="Number of posts to generate"
+        )
+
+    def handle(self, *args, **options):
+        amount = options["amount"]
         user = User.objects.get(username="admin")
         static_path = os.path.join(settings.BASE_DIR, "static", "images", "mush.jpg")
         media_path = os.path.join(settings.MEDIA_ROOT, "mush.jpg")
         shutil.copy(static_path, media_path)
         object = {"title": "Sieni.", "body": "Sieniä on."}
-        for i in range(100):
+        for i in range(amount):
             post = Post.objects.create(
                 title=object["title"],
                 body=object["body"],
@@ -25,4 +33,4 @@ class Command(BaseCommand):
             )
             with open(media_path, "rb") as f:
                 post.banner.save(f"mush.jpg", File(f), save=True)
-        self.stdout.write(self.style.SUCCESS("100 post objektia luotu."))
+        self.stdout.write(self.style.SUCCESS(f"{amount} post objektia luotu."))
