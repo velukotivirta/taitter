@@ -76,6 +76,14 @@ WSGI_APPLICATION = 'taitter.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
+    
+    # NOTE:
+    # Since xampp won't run on the school machine, this can be commented out to use the default sqlite.
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "taitter",
