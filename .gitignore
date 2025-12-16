@@ -11,3 +11,4 @@ venv/
 # Media
 
 media/*
+!media/.gitkeep
