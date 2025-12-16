@@ -6,17 +6,18 @@ from django.utils import timezone
 
 # Create your models here.
 
+
 class Post(models.Model):
     title = models.CharField(max_length=75)
     body = models.TextField(max_length=144)
     slug = models.SlugField(blank=True, null=True)
     date = models.DateTimeField(default=timezone.now)
-    banner = models.ImageField(blank=True, upload_to='')
+    banner = models.ImageField(blank=True, upload_to="")
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    like_count = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.title # No changes to DB with function, no need for migration
-    
+        return self.title  # No changes to DB with function, no need for migration
 
     def save(self, *args, **kwargs):
         if not self.slug:

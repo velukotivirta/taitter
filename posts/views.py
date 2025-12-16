@@ -1,7 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from django.contrib.auth.decorators import login_required
 from . import forms
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 
 # Create your views here.
 
@@ -26,3 +28,16 @@ def post_new(request):
     else:
         form = forms.CreatePost()
     return render(request, 'posts/post_new.html', { 'form': form })
+
+@require_POST
+@login_required
+def like_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    
+    if post.like_count == 0:
+        post.like_count += 1
+    else:
+        post.like_count -= 1
+    
+    post.save()
+    return JsonResponse({'like_count': post.like_count})
