@@ -75,27 +75,34 @@ WSGI_APPLICATION = 'taitter.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    
-    # NOTE:
-    # Since xampp won't run on the school machine, this can be commented out to use the default sqlite.
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-    
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "taitter",
-        "USER": "root",
-        "PASSWORD": "",
-        "HOST": "localhost",
-        "PORT": "3306",
-        "OPTIONS": {
-            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'"
+USE_DOCKER_DB = os.getenv("USE_DOCKER_DB") == "1"
+
+
+if USE_DOCKER_DB:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": "taitter",
+            "USER": "root",
+            "PASSWORD": "root",
+            "HOST": "db",
+            "PORT": "3306",
         }
     }
-}
+else: 
+    DATABASES = {    
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': "taitter",
+            "USER": "root",
+            "PASSWORD": "",
+            "HOST": "localhost",
+            "PORT": "3306",
+            "OPTIONS": {
+                "init_command": "SET sql_mode='STRICT_TRANS_TABLES'"
+            }
+        }
+    }
 
 
 # Password validation
