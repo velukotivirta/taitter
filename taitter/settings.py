@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'posts'
+    'posts',
+    'django_lucide_icons'
 ]
 
 MIDDLEWARE = [
@@ -148,6 +149,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [ # STATICFILES on pakollinen nimi
     BASE_DIR / 'static'
 ]
+
+LUCIDE_ICONS_DIR = BASE_DIR / 'static/lucide/'
 
 
 # Default primary key field type

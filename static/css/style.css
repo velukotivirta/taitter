@@ -1,106 +1,153 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f8fa;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f8fa;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-    flex: 1;  
+  flex: 1;
 }
 
+.tweet-box {
+  width: 600px;
+  border-radius: 20px;
+}
 
-    .tweet-box {
-        width: 600px;
-        border-radius: 20px;
-        
-    }
+.tweet-input textarea {
+  width: 100%;
+  height: 140px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #f0f1f2;
+}
+.tweet-input textarea:focus {
+  background-color: white;
+  border: 2px solid #171515;
+}
 
-    .tweet-input textarea {
-        width: 100%;
-        height: 140px;
-        border: none;
-        outline: none;
-        resize: none;
-        font-size: 18px;
-        padding: 10px;
-        border-radius: 15px;
-        background-color: #f0f1f2;
-    }
-    .tweet-input textarea:focus {
-        background-color: white;
-        border: 2px solid #171515;
-    }
+.card {
+  border: 1px solid rgb(243, 237, 237);
+  border-radius: 20px;
+}
 
-    .card {
-        border: 1px solid rgb(243, 237, 237);
-        border-radius: 20px;
-    }
+#id_title {
+  border: solid rgb(178, 178, 178) 1px;
+  margin-bottom: 10px;
+}
 
-    #id_title {
-        border: solid rgb(178, 178, 178) 1px;
-        margin-bottom: 10px;
-    }
+.register-card {
+  width: 450px;
+  border-radius: 20px;
+}
 
-    .register-card {
-        width: 450px;
-        border-radius: 20px;
-    }
+form input {
+  border-radius: 8px !important;
+  border: solid rgb(211, 209, 209) 1px;
+}
 
-    form input {
-        border-radius: 8px !important;
-        border: solid rgb(211, 209, 209) 1px;
-    }
+.post-card {
+  width: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: none;
+}
 
+.post-banner {
+  width: 100%;
+  max-width: 600px;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 1rem;
+}
 
-    .post-card {
-        width: 600px;
-        border-radius: 20px;
-        overflow: hidden; 
-        border: none;
-    }
+.post-card h3 {
+  font-size: 1.5rem;
+}
 
-    .post-banner {
-        width: 100%;        
-        max-width: 600px;   
-        max-height: 400px;   
-        object-fit: contain;   
-        display: block;
-        margin-bottom: 1rem;
-    }
+.post-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
 
-    .post-card h3 {
-        font-size: 1.5rem;
-    }
+.post-thumb {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
 
-    .post-card p {
-        font-size: 1rem;
-        line-height: 1.5;
-    }
+.post-card h5 {
+  font-size: 1.2rem;
+}
 
+.post-card p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
 
+.post-title {
+  display: flex;
+  justify-content: space-between;
+  width: 60vh;
+}
 
-    .post-thumb {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-    }
+a.text-dark:hover {
+  text-decoration: underline;
+}
 
-    .post-card h5 {
-        font-size: 1.2rem;
-    }
+/* ==== LIKE ==== */
 
-    .post-card p {
-        font-size: 0.95rem;
-        line-height: 1.4;
-    }
+.lucide-icon {
+  width: 2rem;
+}
 
-    a.text-dark:hover {
-        text-decoration: underline;
-    }
+.like-btn {
+  position: relative;
+  border: none;
+  background-color: white;
+}
+
+.like-btn.animate::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5em;
+  animation: floatUp 0.8s ease-out forwards;
+  pointer-events: none;
+}
+
+.like-btn.animate.liked::after {
+  content: "❤️";
+}
+
+.like-btn.animate:not(.liked)::after {
+  content: "💔";
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-60px);
+  }
+}
+
+.like-btn.liked {
+  color: red;
+}

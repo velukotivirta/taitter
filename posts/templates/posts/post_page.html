@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 
+
 {% block title %}
     {{ post.title }}
 {% endblock %}
@@ -10,15 +11,16 @@
     <div class="card post-card shadow-sm">
 
         {% if post.banner %}
-            <img src="{{ post.banner.url }}" alt="{{ post.title }}" class="img-fluid rounded-top post-banner">
+            <img src="{{ post.banner.url }}" alt="{{ post.title }}" class="img-fluid rounded-top post-banner" id="heart">
         {% endif %}
 
         <div class="p-4">
-            <h3 class="fw-bold">{{ post.title }}</h3>
+            <div class="post-title">
+                <h3 class="fw-bold">{{ post.title }}</h3>
+            </div>
             <p class="text-muted mb-3">{{ post.date|date:"d.m.Y H:i" }}</p>
             <p>{{ post.body }}</p>
         </div>
-
     </div>
 </div>
 
